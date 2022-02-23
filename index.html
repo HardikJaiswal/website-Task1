@@ -1,90 +1,125 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="stylesheets/home.css">
-        <link rel="stylesheet" href="stylesheets/navigation.css">
+        <link rel="stylesheet" href="homepage.css">
     </head>
     <body>
-        <div>
-            <div class="nav-header">
-                <a href="#"> Request a Quote</a>
-                |
-                <a href="#"> Client Login</a>
-                |
-                <a href="#"> Vehicle Export Portal</a>
-            </div>
-            <br><br><br><br>
-            <div class="nav-menu">
+        <div class="flex-container">
+            <header class="header">
                 <img src="images/logo.png">
                 <p>
-                    <a href="index.html" id="isCurrent">HOME </a> |
-                    <a href="#">ABOUT FTZWS </a> |
-                    <a href="services.html">OUR SERVICES </a> |
-                    <a href="#">OUR CLIENTS </a> |
-                    <a href="#">CONTACT US</a>
+                    <a href="#">Welcome Jeffery (Sign Out)</a>
+                    |
+                    <a href="#">My Account</a>
+                    |
+                    <a href="#"><img src="images/icon_cart.png"> 999 items - $9999.99 &nbsp;<span id="checkout">Checkout</span></a>
+                    |
+                    <a href="#" id="header-last">Customer Service</a>
                 </p>
+            </header>
+            <div></div>
+        </div>
+        <div class="nav-menu">
+            <div class="nav-menu-bg">
+                <a href="#" id="firstMenuItem">Dining</a>
+                <a href="#">Crystal</a>
+                <a href="#">By Brand</a>
+                <a href="#">What's new</a>
+                <a href="#">Find a Gift</a>
+                <a href="#">Wedding Ideas</a>
+                <a href="#">Clearance & Special offers</a>
+                <div class="search" id="lastMenuItem">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search Keyword/Item #" name="search" class="search-box">&nbsp;
+                        <button type="submit" class="search-button">GO</button>
+                    </form>
+                </div>
             </div>
-            <div class="quote">
-                BRINGING TECHNOLOGY<br>
-                AND OPERATIONAL EXCELLENCE.
-            </div>
-            <div class="article-outer-wrapper">
-                <div class="article-middle-wrapper">
-                    <div class="article-inner-area">
-                        <div class="tiles">
-                            <img src="images/tile1new.jpg">
-                            <br><br>
-                            <p> 
-                                Imagine an international gateway where goods and merchandise flow across borders.
-                                Where countries lower taxes, reduce red tape, and eliminate road blocks. Where 
-                                companies import goods and merchandise directly into a Free Trade Zone - and then
-                                ship products out duty free.<br><br>
-                                The Miami Free Trade Zone connects North America, Europe and Asia to Latin America 
-                                and the Caribbean via direct air and sea transportation links, plus rail and 
-                                expressway. Operated by FTZ World Services, the 47-acre Zone (#372) saves 
-                                companies money and time. 
-                            </p><br>
-                            <a href="#">More about free trade zones ></a>
-                        </div>
-                        <div class="tiles">
-                            <img src="images/tile2.png">
-                            <br><br>
-                            <p>
-                                FTZ World Services is your ticket to the world. We're the licensed operator of the 
-                                Miami Free Trade Zone, the "Gateway to the Americas." We process as much as $1 
-                                billion in goods from more than 70 countries each year.<br><br>
-                                A leader in free trade zone operations, FTZ works magic behind the scenes, offering
-                                logistical and operational excellence. FTZ's many services include technology, 
-                                public warehousing, yard storage and on-site U.S. Customs. Other U.S. free trade zones
-                                also benefit from our technological support and operational consulting. 
-                            </p><br>
-                            <a href="#">Request a quote ></a>
-                        </div>
-                        <div class="tiles">
-                            <img src="images/tile3.png">
-                            <br><br>
-                            <p >
-                                FTZ World Service has the unique advantage of being the licensed operator of the 
-                                Miami Free Trade Zone. We offer state-of-the-art facilities and a stellar track 
-                                record in zone management, plus technological support, warehousing, and storage. 
-                                Because FTZ understands U.S. Customs rules, we can use our software and logistical 
-                                expertise to speed up your paperwork, remove road blocks, and get products to 
-                                market cheaper and faster. We save companies across multiple industries thousands 
-                                of dollars per month in fees. We'll give you less to manage and more dollars to 
-                                keep in your pocket.
-                            </p><br>
-                            <a href="#">More about what we offer ></a>
-                        </div>
+        </div>
+        <div class="tags">
+            <span>
+                &nbsp;&nbsp;&nbsp;Shipping on Orders Over $150
+                &emsp;&compfn;&emsp;
+                Holiday Platters
+                &emsp;&compfn;&emsp;
+                Celebrate Thanksgiving
+            </span>
+            <section class="bridal-registry">
+                <img src="images/bridelRegistry.jpg"> 
+                Bridal Registry
+            </section>
+        </div>
+        <hr class="line">
+        <div class="flex-container central-content">
+            <div class="tile-1">
+                <img src="images/Recipe.jpg" >
+                <div class="outer-wrapper">
+                    <div class="inner-wrapper">
+                        <p class="service"><span class="heading">Dress your table</span><br><br>
+                        Create a fabulous new look for your next event.
+                        Choose from various styles and ideas.</p>
+                        <br><br>
+                        <b>Contemporary</b>
+                        <b>Traditional</b>
+                        <b>Brunch</b>
+                        <b>Themes</b>
+                        <b>Buffet</b>
+                        <b id="lastTag">Wine & Cheese</b><br><br>
+                        <a href="#">See More Dress Your Table Ideas</a>
                     </div>
                 </div>
             </div>
-            <br>
-            <div>
-                <p class="footer">Copyright &copy; 2010 FTZ World Services. All rights reserved. <a href="#">Contact
-                us</a> | <a href="#">Request a quote</a></p>
+            <div class="tile-2">
+                <div class="tile-2-1">
+                    <div class="tile-2-1-text">
+                        <span>You'll love our fine stemware collection</span><br>
+                        Fusce suscipit risus id orci accumsan aliquet.<br><br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        &emsp;&emsp;&emsp;&emsp;
+                        <a href="#">See all stemware</a>
+                    </div>
+                    <img src="images/promo_glass.png">
                 </div>
+                <div class="tile-2-2">
+                    <div class="tile-2-2-text">
+                        <span>Home accent for the holidays</span><br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br><br>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        &emsp;&emsp;&emsp;&emsp;
+                        <a href="#">See all home accents</a>
+                    </div>
+                    <img src="images/promo_plates.png">
+                </div>
+                <div class="tile-2-3">
+                    <div class="tile-2-3-text">
+                        <span>Miaksa clearance<br>sale 20% to 80% off</span><br>
+                        Fusce suscipit risus id orci<br> accumsan aliquet.<br><br>
+                        <a href="#">See all clearance items</a>
+                    </div>
+                    <img src="images/promo_album.png">
+                </div>
+            </div>
+            <div class="footer">
+                <div class="text-left">
+                    <p>
+                        <a href="#">About Mikasa</a>
+                        |
+                        <a href="#">Customer Service</a>
+                        |
+                        <a href="#">Privacy Policy</a>
+                    </p><br>
+                    For assistance, call us at 1.866.645.2721 
+                    (Mon - Fri 8:30am - 6:00pm est) or <a href="#">Email Us</a><br><br>
+                    &copy; Copyright 2008 Mikasa & Company
+                </div>
+                <div class="text-right">
+                    Sign up to receive special offers & promotions from Mikasa.<br><br>
+                    <form action="/action_page.php">
+                        <input class="input" type="text" placeholder="Enter your email address" name="search">&nbsp;
+                        <button type="submit">SIGN UP</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>
