@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="homepage.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img src="images/logo.PNG" style="height: fit-content;">
+        <div class="company-detail">
+          <span>Employee Directory</span><br>
+          The Ultimate People Directory Experience
+        </div>
+      </div>
+      <div class="welcome-message" style="font-size: 25px;">
+        <span id="welcomeMessage">Welcome, </span>
+        <img alt="photo" src="images/person-icon.png"> 
+      </div>
+    </header>
+    <br>
+    <article class="article">
+      <section class="filter-types">
+        <div>
+          <b>Departments</b><br><br>
+          &nbsp;<button onclick="filterByDepartment('IT')">IT</button><br>
+          &nbsp;<button onclick="filterByDepartment('Human Resource')">Human Resource</button><br>
+          &nbsp;<button onclick="filterByDepartment('MD')">MD</button><br>
+          &nbsp;<button onclick="filterByDepartment('Sales')">Sales</button><br><br><br>
+        </div>
+        <div>
+          <b>Offices</b><br><br>
+          &nbsp;<button onclick="filterByOffice('Seattle')">Seattle</button><br>
+          &nbsp;<button onclick="filterByOffice('India')">India</button><br><br><br>
+        </div>
+        <div>
+          <b>Job titles</b><br><br>
+          &nbsp;<button onclick="filterByJob('Sharepoint Practice Head')">Sharepoint Practice Head</button><br>
+          &nbsp;<button onclick="filterByJob('.NET Development Lead')">.NET Development Lead</button><br>
+          &nbsp;<button onclick="filterByJob('Recruitment Expert')">Recruitment Expert</button><br>
+          &nbsp;<button onclick="filterByJob('BI Developer')">BI Developer</button><br>
+          &nbsp;<button onclick="filterByJob('Business Analyst')">Business Analyst</button><br>
+          <a id="viewMoreBtn" style="color: #00b1fc;" onclick="viewMore()">&nbsp;&nbsp;view more</a>
+          <div id="moreOptions">
+            &nbsp;<button onclick="filterByJob('Operations Manager')">Operations Manager</button><br>
+            &nbsp;<button onclick="filterByJob('Product Manager')">Product Manager</button><br>
+            &nbsp;<button onclick="filterByJob('Network Engineer')">Network Engineer</button><br>
+            &nbsp;<button onclick="filterByJob('Software Engineer')">Software Engineer</button><br>
+            &nbsp;<button onclick="filterByJob('UI Designer')">UI Designer</button><br>
+            &nbsp;<button onclick="filterByJob('Lead Engineer - Dot net')">Lead Engineer - Dot net</button><br>
+            &nbsp;<button onclick="filterByJob('Talent Magnet Jr.')">Talent Magnet Jr.</button><br>
+            &nbsp;&nbsp;<a style="color: #00b1fc;" onclick="viewLess()">view less</a><br>
+          </div>
+        </div>
+      </section>
+      <div class="content">
+        <div id="filterByName">
+          <button onclick="displayAllEmployee()"><img src="images/person-icon.png"></button>
+        </div><br>
+        <div class="advanced-filters">
+          <div>
+            <a>Search</a>&nbsp;
+            <input id="searchBox" class="search-icon" type="text" placeholder="Enter any word">&emsp;
+            <button type="reset" id="clear" onclick="displayAllEmployee()">Clear</button>&emsp;&emsp;
+            Filter by
+            <select name="fiter-by" id="filterBy">
+              <option value="firstName">First Name</option>
+              <option value="lastName">Last Name</option>
+              <option value="prefferedName">Preffered Name</option>
+              <option value="phoneNumber">Contact Number</option>
+              <option value="jobTitle">Job Role</option>
+            </select>
+          </div>
+          <button id="addEmployee">Add Employee</button>
+        </div><br>
+        <span style="font-size: smaller;">Note: Please use the advanced filter option to refine your results.</span>
+        <div id="searchResult">
+        </div>
+      </div>
+    </article>
+    <div id="popupForm">
+      <form class="form-container">
+        <h1><span id="formHeading"></span> Employee</h1><br>
+        <label for="fName"><b>First Name*</b></label>
+        <input id="fName" type="text" placeholder="Enter First Name" name="fName" required><br><br>
+
+        <label for="lName"><b>Last Name*</b></label>
+        <input id="lName" type="text" placeholder="Enter Last Name" name="lName" required><br><br>
+
+        <!-- <label for="pName"><b>Preffered Name</b></label>
+        <input id="pName" type="text" placeholder="Enter Preffered Name" name="pName"><br><br> -->
+        <label for="email"><b>Email*</b></label>
+        <input id="email" type="text" placeholder="Enter Email" name="email" required><br><br>
+
+        <label for="jobtitle"><b>Job Title</b></label>
+        <select id="jobtitle" name="jobtitle" >
+          <option value="Sharepoint Practice Head">Sharepoint Practice Head</option>
+          <option value=".NET Development Lead">.NET Development Lead</option>
+          <option value="Recruitment Expert">Recruitment Expert</option>
+          <option value="BI Developer">BI Developer</option>
+          <option value="Business Analyst">Business Analyst</option>
+          <option value="Intern">Intern</option>
+          <option value="Operations Manager">Operations Manager</option>
+          <option value="Product Manager">Product Manager</option>
+          <option value="Network Engineer">Network Engineer</option>
+          <option value="Software Engineer">Software Engineer</option>
+          <option value="UI Designer">UI Designer</option>
+          <option value="Lead Engineer - Dot net">Lead Engineer - Dot net</option>
+          <option value="Talent Magnet Jr.">Talent Magnet Jr.</option>
+        </select><br><br>
+
+        <label for="dpmt"><b>Department</b></label>
+        <select id="dpmt" name="department">
+          <option value="IT">IT</option>
+          <option value="Human Resource">Human Resource</option>
+          <option value="MD">MD</option>
+          <option value="Sales">Sales</option>
+        </select><br><br>
+
+        <label for="office"><b>Office</b></label>
+        <span><input type="radio" name="office" value="India" checked> India</span>
+        <span><input type="radio" name="office" value="Seattle"> Seattle</span><br><br>
+        
+        <label for="number"><b>Contact Number* </b></label>
+        <input id="phoneNumber" type="number" placeholder="Enter Mobile Number" name="phoneNumber" required><br><br>
+        
+        <label for="skypeID"><b>Skype ID</b></label>
+        <input id="skypeID" type="text" placeholder="Enter Skype ID" name="skypeID" ><br><br>
+        <button type="button" onclick="closeForm()" style="float: right;color: white;background-color: red;">Close</button>
+        <button id="createBtn" type="submit" onclick="createEmployee()" style="float: right;color: white;background-color: green;">Create</button>
+      </form>
+    </div>
+    <div id="employeeInfo">
+    </div>
+    <script defer src="script.js"></script>
+  </body>
+</html>
