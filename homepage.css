@@ -135,29 +135,35 @@ button:hover{
   padding: 0.9%;
   background-color: white;
   box-shadow: 0px 0px 5px 6px grey;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
 }
-#employeeInfo > div{
-  height: 56.6%;
+#employeeInfo > div > div{
+  width: 100%;
 }
-.form-container > input, #employeeInfo > div > span{
+.form-container > div{
+  width: 100%;
+}
+.form-container > div > input, #employeeInfo > div > div > span{
   float: right;
   width: 53%;
 }
-.form-container > h1 {
+.form-container > div > h1 {
   margin: 0;
   padding: 15px 0px;
   background-color: lightblue;
   text-align: center;
 }
-.form-container > select{
+.form-container > div > select{
   float: right;
   width: 55%;
 }
-#employeeInfo > div > button:hover{
+#employeeInfo > div > div > button:hover{
   padding: 2px 6px;
   border: 2px solid rgb(211, 211, 211) ;
 }
-#employeeInfo > div > button,.form-container > span{
+#employeeInfo > div > div > button,span.radio-btn{
   float: right;
   padding: 4px 8px;
   max-height: 30px;
@@ -203,4 +209,11 @@ a:hover{
   color: red;
   font-size: small;
   display: inline-flex;
+}
+.required-field{
+  float: right;
+  width: 55%;
+}
+.required-field > input{
+  width: 95%;
 }
