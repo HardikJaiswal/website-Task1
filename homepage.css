@@ -120,8 +120,7 @@ button:hover{
 .result > p > span{
   width: 100%;
 }
-.result > p > span > img{
-  height: 10px;
+.result > p > span > i{
   margin-top: 3px;
   margin-right: 4px;
 }
