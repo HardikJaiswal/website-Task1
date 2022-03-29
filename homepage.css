@@ -184,7 +184,7 @@ button:hover{
 }
 .search-icon{
   padding-left: 25px;
-  background: url("./images/search-icon.PNG") no-repeat left;
+  background: url("./images/search-icon.png") no-repeat left;
   background-size: 20px;
   border: 1px solid #d4d0d0;
   height: 23px;
