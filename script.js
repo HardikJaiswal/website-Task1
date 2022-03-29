@@ -166,7 +166,7 @@ function addEmployeeTile(staff){
       <span><b>${staff.firstName} ${staff.lastName}</b></span><br>
       <span>${staff.jobTitle}</span><br>
       <span>${staff.department} Department</span><br>
-      <span><img src="images/call.PNG"> <img src="images/mail.PNG"> <img src="images/message.png"> 
+      <span><img src="images/call.png"> <img src="images/mail.png"> <img src="images/message.png"> 
       <img src="images/star.png"> <img src="images/heart.png"></span>
     </p>`;
   newResult.setAttribute("class","result");
