@@ -96,8 +96,8 @@ button:hover{
   font-weight: bold;
 }
 .result{
-  width: 93%;
-  height: 60px;
+  width: 93.3%;
+  height: 63px;
   padding: 7px;
   background-color: #e9e8e8;
   display: flex;
@@ -110,13 +110,20 @@ button:hover{
 .result > p{
   font-size: 12px;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
-.result > p > b{
+.result > p > span > b{
   font-size: medium;
   color: rgb(82, 82, 82);
 }
-.result > p > img{
-  height: 11px;
+.result > p > span{
+  width: 100%;
+}
+.result > p > span > img{
+  height: 10px;
+  margin-top: 3px;
+  margin-right: 4px;
 }
 #popupForm, #employeeInfo {
   display: none;
