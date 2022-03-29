@@ -17,7 +17,7 @@ function getElementWithId(id){
   return document.getElementById(id);
 }
 
-function appendTextInFilter(index,filterType){
+function appendCountInFilter(index,filterType){
   const obj = document.querySelector(".filter-types").querySelectorAll("div");
   Array.from(obj[index].querySelectorAll("button")).forEach( node => {
     node.insertAdjacentText("beforeend",` (${findCount(filterType,node.innerText)})`);
@@ -25,9 +25,9 @@ function appendTextInFilter(index,filterType){
 }
 
 function showCount(){
-  appendTextInFilter(0,"department");
-  appendTextInFilter(1,"office");
-  appendTextInFilter(2,"jobTitle");
+  appendCountInFilter(0,"department");
+  appendCountInFilter(1,"office");
+  appendCountInFilter(2,"jobTitle");
 }
 
 function findCount(property,val){
@@ -41,14 +41,14 @@ function findCount(property,val){
 function displayAllEmployee(){
   clearResults();
   employees.forEach( staff =>{
-    addEmployee(staff);
+    addEmployeeTile(staff);
   });
 }
 
 function addAlphabetFilter(){
   const AlphabetFilter = getElementWithId("filterByName");
   for(let i=65; i<=90; i++){
-    let btn = document.createElement("button");
+    let btn = createHtmlTag("button");
     btn.setAttribute("class","button-primary");
     btn.innerText = String.fromCharCode(i);
     btn.addEventListener("click",() => {filterByAlphabet(btn.innerText);});
@@ -60,17 +60,17 @@ function filterByAlphabet(letter){
   clearResults();
   employees.forEach( staff =>{
     if(staff.firstName[0]===letter){
-      addEmployee(staff);
+      addEmployeeTile(staff);
     }
   });
   if(_resultPanel.innerHTML==="") noResultFound();
 }
 
-function filterBy(name,type){
+function filterByType(name,type){
   clearResults();
   employees.forEach( staff =>{
     if(staff[type]===name){
-      addEmployee(staff);
+      addEmployeeTile(staff);
     }
   });
   if(_resultPanel.innerHTML==="") noResultFound();
@@ -82,7 +82,7 @@ function filterBySearch(){
   let category = getElementWithId("filterBy").value;
   employees.forEach(staff => {
     if(staff[category].includes(val) || staff[category].toString().includes(val)){
-      addEmployee(staff);
+      addEmployeeTile(staff);
     }
   });
   if(_resultPanel.innerHTML==="") noResultFound();
@@ -126,7 +126,7 @@ function createEmployee(){
   if(!isInvalid && staff.firstName!=="" && staff.lastName!=="" && staff.email!=="" && staff.phoneNumber!==""){
     employees.push(staff);
     clearErrorMessage();
-    addEmployee(staff);
+    addEmployeeTile(staff);
     clearInputs();
     closeForm();
   }
@@ -157,9 +157,9 @@ function clearInputs() {
   getElementWithId("skypeID").value = "";
 }
 
-function addEmployee(staff){
+function addEmployeeTile(staff){
   if(typeof staff === 'undefined') return;
-  let newResult = document.createElement("div");
+  let newResult = createHtmlTag("div");
   newResult.innerHTML = 
     `<img src="https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/500">
     <p>
@@ -169,37 +169,43 @@ function addEmployee(staff){
       <img src="images/star-icon.PNG"> <img src="images/heart-icon.PNG">
     </p>`;
   newResult.setAttribute("class","result");
-  newResult.addEventListener("click",() => {DisplayEmployee(staff);});
+  newResult.addEventListener("click",() => {DisplayEmployeePopup(staff);});
   _resultPanel.appendChild(newResult);
 }
 
-function DisplayEmployee(staff){
-  let employeeInfo = getElementWithId("employeeInfo");
-  let info = document.createElement("div");
-  info.innerHTML = 
-    `<b style="text-decoration: underline;font-size: x-large;">Employee Info</b> 
-    <button id="hideInfo" onclick="hideInfo()">X</button><br><br>
-    <br><b>Name: </b> <span>${staff.firstName} ${staff.lastName}</span><br><br>
-    <b>Preffered Name: </b> <span>${staff.prefferedName}</span><br><br>
-    <b>Email: </b> <span>${staff.email}</span><br><br>
-    <b>Contact No.: </b> <span>${staff.phoneNumber}</span><br><br>
-    <b>Skype ID: </b> <span>${staff.skypeID}</span><br><br>
-    <b>Job title: </b> <span>${staff.jobTitle}</span><br><br>
-    <b>Department: </b> <span>${staff.department}</span><br><br>
-    <b>Office Location: </b> <span>${staff.office}</span><br><br>`;
-  employeeInfo.style.display = "flex";
+function createHtmlTag(name){
+  return document.createElement(name);
+}
 
-  const editBtn = document.createElement("button");
+function DisplayEmployeePopup(staff){
+  let employeeInfo = getElementWithId("employeeInfo");
+  let info = createHtmlTag("div");
+  info.innerHTML = 
+    `<div><b style="text-decoration: underline;font-size: x-large;">Employee Info</b> 
+    <button id="hideInfo" onclick="hideInfo()">X</button><br><br></div>
+    <div><b>Name: </b> <span>${staff.firstName} ${staff.lastName}</span><br><br></div>
+    <div><b>Preffered Name: </b> <span>${staff.prefferedName}</span><br><br></div>
+    <div><b>Email: </b> <span>${staff.email}</span><br><br></div>
+    <div><b>Contact No.: </b> <span>${staff.phoneNumber}</span><br><br></div>
+    <div><b>Skype ID: </b> <span>${staff.skypeID}</span><br><br></div>
+    <div><b>Job title: </b> <span>${staff.jobTitle}</span><br><br></div>
+    <div><b>Department: </b> <span>${staff.department}</span><br><br></div>
+    <div><b>Office Location: </b> <span>${staff.office}</span><br><br></div>`;
+  employeeInfo.style.display = "flex";
+  
+  let div = createHtmlTag("div");
+  const editBtn = createHtmlTag("button");
   editBtn.innerText = "Edit";
   editBtn.setAttribute("style","background-color: #00b1fc; color:white;float: left;");
   editBtn.addEventListener("click",() => {editEmployee(staff);} );
-  info.appendChild(editBtn);
+  div.appendChild(editBtn);
   
-  const deleteBtn = document.createElement("button");
+  const deleteBtn = createHtmlTag("button");
   deleteBtn.innerText = "Delete";
   deleteBtn.setAttribute("style","color: white;background-color: black;");
   deleteBtn.addEventListener("click",() => {delteEmployee(staff);});
-  info.appendChild(deleteBtn);
+  div.appendChild(deleteBtn);
+  info.appendChild(div);
   employeeInfo.appendChild(info);
 }
 
@@ -240,10 +246,9 @@ function openForm(isEdit, staff = undefined) {
   const heading = getElementWithId("formHeading");
   if(isEdit){
     heading.innerText = "Edit";
-    let saveBtn = document.createElement("button");
+    let saveBtn = createHtmlTag("button");
     saveBtn.setAttribute("type","submit");
-    saveBtn.style.backgroundColor = "#00b1fc";
-    saveBtn.style.color = "white";
+    saveBtn.style = "color:white;background-color:#00b1fc;margin-left:10px;";
     saveBtn.innerText = "Save";
     saveBtn.addEventListener("click",() => {
       getEmloyeeDetails(staff);
@@ -252,6 +257,7 @@ function openForm(isEdit, staff = undefined) {
       const obj = document.querySelector("form.form-container");
       obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.lastIndexOf("<button")-1);
       closeForm();
+      clearErrorMessage();
     });
     obj.appendChild(saveBtn);
     setDisplay("createBtn","none");
@@ -297,4 +303,5 @@ getElementWithId("searchBox").addEventListener("keyup", () => {filterBySearch();
 getElementWithId("addEmployee").addEventListener("click",() => {openForm(false);})
 getElementWithId("pName").addEventListener("focus",() => {
   getElementWithId("pName").value = `${getElementWithId("fName").value} ${getElementWithId("lName").value}`;
-})
+});
+clearErrorMessage();
