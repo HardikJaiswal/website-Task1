@@ -166,8 +166,10 @@ function addEmployeeTile(staff){
       <span><b>${staff.firstName} ${staff.lastName}</b></span><br>
       <span>${staff.jobTitle}</span><br>
       <span>${staff.department} Department</span><br>
-      <span><img src="images/call.png"> <img src="images/mail.png"> <img src="images/message.png"> 
-      <img src="images/star.png"> <img src="images/heart.png"></span>
+      <span style="color:#969595">
+      <i class="fa-solid fa-square-phone"></i><i class="fa-solid fa-envelope" style="margin-left:3px;margin-right:8px;"></i>
+      <i class="fa-solid fa-comment"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-heart"></i>
+      </span>
     </p>`;
   newResult.setAttribute("class","result");
   newResult.addEventListener("click",() => {DisplayEmployeePopup(staff);});
