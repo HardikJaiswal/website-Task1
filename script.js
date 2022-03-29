@@ -163,10 +163,11 @@ function addEmployeeTile(staff){
   newResult.innerHTML = 
     `<img src="https://picsum.photos/id/${Math.floor(Math.random() * 1000)}/500">
     <p>
-      <b>${staff.firstName} ${staff.lastName}</b>
-      <br>${staff.jobTitle}<br>${staff.department} Department<br>
-      <img src="images/number-icon.PNG"> <img src="images/email-icon.PNG"> <img src="images/message-icon.PNG">
-      <img src="images/star-icon.PNG"> <img src="images/heart-icon.PNG">
+      <span><b>${staff.firstName} ${staff.lastName}</b></span><br>
+      <span>${staff.jobTitle}</span><br>
+      <span>${staff.department} Department</span><br>
+      <span><img src="images/call.PNG"> <img src="images/mail.PNG"> <img src="images/message.png"> 
+      <img src="images/star.png"> <img src="images/heart.png"></span>
     </p>`;
   newResult.setAttribute("class","result");
   newResult.addEventListener("click",() => {DisplayEmployeePopup(staff);});
@@ -203,7 +204,9 @@ function DisplayEmployeePopup(staff){
   const deleteBtn = createHtmlTag("button");
   deleteBtn.innerText = "Delete";
   deleteBtn.setAttribute("style","color: white;background-color: black;");
-  deleteBtn.addEventListener("click",() => {delteEmployee(staff);});
+  deleteBtn.addEventListener("click",() => {
+    if(confirm("This info will be permamnently delted. Want to proceed?"))delteEmployee(staff);
+  });
   div.appendChild(deleteBtn);
   info.appendChild(div);
   employeeInfo.appendChild(info);
@@ -257,7 +260,6 @@ function openForm(isEdit, staff = undefined) {
       const obj = document.querySelector("form.form-container");
       obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.lastIndexOf("<button")-1);
       closeForm();
-      clearErrorMessage();
     });
     obj.appendChild(saveBtn);
     setDisplay("createBtn","none");
@@ -269,6 +271,7 @@ function openForm(isEdit, staff = undefined) {
 
 function closeForm() {
   setDisplay("popupForm","none");
+  clearErrorMessage();
 }
 
 function viewMore(){
